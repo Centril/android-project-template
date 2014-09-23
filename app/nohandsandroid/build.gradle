@@ -26,8 +26,8 @@ def getVersionName() { versionName "1.0" }
 
 // Android compile version:
 def getMinSdk() { 9 }					// GINGERBREAD	= 2.3
-def getTargetSdk() { 20 }				// KITKAT_WATCH	= 4.4W
-def getBuildToolsVersion() { "2.0.0" }	// Latest is 2.0.0
+def getTargetSdk() { 20 }				// KITKAT_WATCH	= 4.4W / 4.4L
+def getBuildToolsVersion() { "20.0.0" }	// Latest is 20.0.0
 
 // Generate BuildTimestamp.java.
 apply from: 'timestamp.gradle'
