@@ -25,8 +25,11 @@ dependencies {
 	compile 'net.engio:mbassador:1.2.0'
 	compile 'joda-time:joda-time:+'
 
+	// Android support:
+	compile 'com.android.support:support-v4:20.0.0'
+	compile 'com.android.support:appcompat-v7:20.0.0'
+
 	// Android utilities:
-	compile 'com.android.support:support-v4:+'
 	compile 'com.j256.ormlite:ormlite-core:+'
 	compile 'com.j256.ormlite:ormlite-android:+'
 }

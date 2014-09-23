@@ -42,7 +42,7 @@ android {
 
 		signingConfigs {
 			debug {
-				storeFile file(debugfile)
+				storeFile file("nohandsandroid.debug.keystore")
 				keyAlias 'androiddebugkey'
 				storePassword 'android'
 				keyPassword 'android'
@@ -58,7 +58,7 @@ android {
 		project.ext.releaseCfg = null
 		signingConfigs {
 			debug {
-				storeFile file(debugfile)
+				storeFile file("nohandsandroid.debug.keystore")
 				keyAlias 'androiddebugkey'
 				storePassword 'android'
 				keyPassword 'android'
