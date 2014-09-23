@@ -79,5 +79,3 @@ release.signing
 !+.gradle
 !/gradle/
 build/
-# already checked into git so don't include anymore!
-gradle-wrapper.properties
