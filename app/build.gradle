@@ -1,0 +1,55 @@
+/*
+ * Copyright (c) 2013 See AUTHORS file.
+ * 
+ * This file is part of NoHands.
+ * 
+ * NoHands is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * NoHands is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with NoHands. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+	repositories {
+		mavenCentral()
+
+		maven {
+			url 'https://github.com/Centril/mvn-repo/raw/master/maven-deploy'
+		}
+	}
+	dependencies {
+		classpath 'com.android.tools.build:gradle:+'
+
+		classpath 'se.toxbee.lgio:gradle-plugin-lgio:+'
+	}
+}
+
+apply plugin: 'idea'
+
+allprojects {
+	repositories {
+		mavenCentral()
+		maven {
+			url 'https://github.com/Goddchen/mvn-repo/raw/master/'
+		}
+		maven {
+			url 'https://github.com/Centril/mvn-repo/raw/master/maven-deploy'
+		}
+	}
+}
+
+/**
+ * Task to generate a gradle wrapper.
+ */
+task wrapper( type: Wrapper ) {
+	gradleVersion = '2.1'
+}
