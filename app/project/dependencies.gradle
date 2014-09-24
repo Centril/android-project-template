@@ -17,38 +17,17 @@
  * along with RandomProject. If not, see <http://www.gnu.org/licenses/>.
  */
 
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-buildscript {
-	repositories {
-		mavenCentral()
+dependencies {
+	// Java utilities:
+	compile 'com.google.guava:guava:+'
+	compile 'net.engio:mbassador:1.2.0'
+	compile 'joda-time:joda-time:+'
 
-		maven {
-			url 'https://github.com/Centril/mvn-repo/raw/master/maven-deploy'
-		}
-	}
-	dependencies {
-		classpath 'com.android.tools.build:gradle:+'
-		classpath 'se.toxbee.lgio:gradle-plugin-lgio:+'
-	}
-}
+	// Android support:
+	compile 'com.android.support:support-v4:20.0.0'
+	compile 'com.android.support:appcompat-v7:20.0.0'
 
-apply plugin: 'idea'
-
-allprojects {
-	repositories {
-		mavenCentral()
-		maven {
-			url 'https://github.com/Goddchen/mvn-repo/raw/master/'
-		}
-		maven {
-			url 'https://github.com/Centril/mvn-repo/raw/master/maven-deploy'
-		}
-	}
-}
-
-/**
- * Task to generate a gradle wrapper.
- */
-task wrapper( type: Wrapper ) {
-	gradleVersion = '2.1'
+	// Android utilities:
+	compile 'com.j256.ormlite:ormlite-core:+'
+	compile 'com.j256.ormlite:ormlite-android:+'
 }

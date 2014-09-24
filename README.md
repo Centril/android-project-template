@@ -1,3 +1,3 @@
-# NoHands-android
+# Project name
 
-NoHands, remote dialing smartphones via computers - Android part of stack
+A description

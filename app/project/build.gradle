@@ -1,0 +1,67 @@
+/*
+ * Copyright (c) 2013 See AUTHORS file.
+ * 
+ * This file is part of RandomProject.
+ * 
+ * RandomProject is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * RandomProject is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with RandomProject. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+apply plugin: 'android'
+apply plugin: 'idea'
+
+// Version:
+def getVersionCode() { 1 }
+def getVersionName() { versionName "1.0" }
+
+// Android compile version:
+def getMinSdk() { 9 }					// GINGERBREAD	= 2.3
+def getTargetSdk() { 20 }				// KITKAT_WATCH	= 4.4W / 4.4L
+def getBuildToolsVersion() { "20.0.0" }	// Latest is 20.0.0
+
+// Generate BuildTimestamp.java.
+apply from: 'timestamp.gradle'
+
+// Add all dependencies.
+apply from: 'dependencies.gradle'
+
+// Apply signing configuration.
+apply from: 'signing.gradle'
+
+android {
+	buildToolsVersion getBuildToolsVersion()
+
+	// Override manifest stuff.
+    compileSdkVersion getTargetSdk()
+    defaultConfig {
+        minSdkVersion getMinSdk()
+        targetSdkVersion getTargetSdk()
+	    versionCode getVersionCode()
+	    versionName getVersionName()
+    }
+
+	// Using Java 7, but no try-with-resources.
+	compileOptions {
+		sourceCompatibility JavaVersion.VERSION_1_7
+		targetCompatibility JavaVersion.VERSION_1_7
+	}
+}
+
+// Proguard settings.
+apply from: 'proguard.gradle'
+
+// Fix build types.
+apply from: 'buildtypes.gradle'
+
+// Fix META-INF stuff.
+apply from: 'metainf-fix.gradle'

@@ -17,38 +17,19 @@
  * along with RandomProject. If not, see <http://www.gnu.org/licenses/>.
  */
 
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-buildscript {
-	repositories {
-		mavenCentral()
-
-		maven {
-			url 'https://github.com/Centril/mvn-repo/raw/master/maven-deploy'
+android {
+	// Introduce "releaseDebug" extending release but debuggable.
+	buildTypes {
+		debugRelease.initWith( buildTypes.release )
+		debugRelease {
+			debuggable     true
+			signingConfig  signingConfigs.debug
 		}
 	}
-	dependencies {
-		classpath 'com.android.tools.build:gradle:+'
-		classpath 'se.toxbee.lgio:gradle-plugin-lgio:+'
+	sourceSets.debugRelease.setRoot( 'src/release' )
+
+	// Suffix all build types with type except for release, allowing parallel installs.
+	buildTypes.each{ type ->
+		type.applicationIdSuffix = type.name == 'release' ? '' : ".$type.name"
 	}
-}
-
-apply plugin: 'idea'
-
-allprojects {
-	repositories {
-		mavenCentral()
-		maven {
-			url 'https://github.com/Goddchen/mvn-repo/raw/master/'
-		}
-		maven {
-			url 'https://github.com/Centril/mvn-repo/raw/master/maven-deploy'
-		}
-	}
-}
-
-/**
- * Task to generate a gradle wrapper.
- */
-task wrapper( type: Wrapper ) {
-	gradleVersion = '2.1'
 }
